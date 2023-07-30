@@ -1,0 +1,61 @@
+﻿@model BasseinProekt.Models.Klient
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Klient</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Spravka)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Spravka.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FamiliR)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FamiliR)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ImR)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ImR)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Otchestvo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Otchestvo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SeriaPasport)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SeriaPasport)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NomerPasporta)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NomerPasporta)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-outline-info" asp-action="Index">Вернуться</a>
+    @if (User.IsInRole("admin") || User.IsInRole("moderator"))
+    {
+        <a class="btn btn-outline-info" asp-action="Edit" asp-route-id="@Model.Id">Изменить</a>
+    }
+    @if (User.IsInRole("admin"))
+    {
+        <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@Model.Id">Удалить</a>
+    }
+</div>

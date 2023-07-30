@@ -1,0 +1,49 @@
+﻿@model BasseinProekt.Models.Spravka
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Spravka</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DateNachala)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DateNachala)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DateEnd)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DateEnd)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GroupZdorovie)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GroupZdorovie)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Dopusk)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Dopusk)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-outline-info" asp-action="Index">Вернуться</a>
+    @if (User.IsInRole("admin") || User.IsInRole("moderator"))
+    {
+        <a class="btn btn-outline-info" asp-action="Edit" asp-route-id="@Model.Id">Изменить</a>
+    }
+    @if (User.IsInRole("admin"))
+    {
+        <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@Model.Id">Удалить</a>
+    }
+</div>

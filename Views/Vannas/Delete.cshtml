@@ -1,0 +1,51 @@
+﻿@model BasseinProekt.Models.Vanna
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Vanna</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TypeVanna)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TypeVanna.Id)
+        </dd class>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NomerVanna)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NomerVanna)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Shirina)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Shirina)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Glubina)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Glubina)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Dlina)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Dlina)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

@@ -1,0 +1,52 @@
+﻿@model BasseinProekt.Models.Vanna
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Vanna</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TypeVannaID" class="control-label"></label>
+                <select asp-for="TypeVannaID" class ="form-control" asp-items="ViewBag.TypeVannaID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="NomerVanna" class="control-label"></label>
+                <input asp-for="NomerVanna" class="form-control" />
+                <span asp-validation-for="NomerVanna" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Shirina" class="control-label"></label>
+                <input asp-for="Shirina" class="form-control" />
+                <span asp-validation-for="Shirina" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Glubina" class="control-label"></label>
+                <input asp-for="Glubina" class="form-control" />
+                <span asp-validation-for="Glubina" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dlina" class="control-label"></label>
+                <input asp-for="Dlina" class="form-control" />
+                <span asp-validation-for="Dlina" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

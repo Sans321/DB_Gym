@@ -1,0 +1,33 @@
+﻿@model IEnumerable<BasseinProekta.Models.User>
+@{
+    ViewBag.Title = "Список пользователей";
+}
+
+<a asp-action="Create">Добавить пользователя</a>
+
+<table class="table">
+    <tr><th>Email</th><th>Год</th><th></th></tr>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.Email</td>
+            <td>
+                <form asp-action="Delete" asp-route-id="@user.Id" method="post">
+                    @if (User.IsInRole("admin"))
+                    {
+                        @if (@user.Email != "admin@test.me" && @user.Email != @User.Identity.Name)
+                        {
+                            <button type="submit" class="btn btn-outline-danger">Удалить</button>
+                            <a class="btn btn-outline-info" asp-controller="Roles" asp-action="Edit" asp-route-userid="@user.Id">Права доступа</a>
+                        }
+
+                    }
+                </form>
+            </td>
+        </tr>
+    }
+</table>
+@if (User.IsInRole("admin"))
+{
+    <a class="btn btn-outline-info" asp-action="Create">Добавить пользователя</a>
+}

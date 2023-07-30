@@ -1,0 +1,114 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="card-group" style="width: 75%; margin: 0 auto;">
+        <div class="card-body" style="margin: 25px;">
+            <h5 class="card-title">Расписание:</h5>
+            <a class="list-group-item list-group-item-action list-group-item-info rounded-pill" style="margin-top: 10px;" asp-controller="Raspisanies" asp-action="Index">
+                Расписание
+            </a>
+        </div>
+    </div>
+    <div class="card-group" style="width: 75%; margin: 0 auto;">
+        <div class="card-body" style="margin: 15px;">
+
+            <h5 class="card-title">Пользователю:</h5>
+            @if (User.IsInRole("admin") || User.IsInRole("Users"))
+            {
+                <a class="list-group-item list-group-item-action list-group-item-info rounded-pill" style="margin-top: 10px;" asp-controller="KartaKlientas" asp-action="Index">
+                    Карта клиента
+                </a>
+                <a class="list-group-item list-group-item-action list-group-item-info rounded-pill" style="margin-top: 10px;" asp-controller="Kartas" asp-action="Index">
+                    Карта
+                </a>
+                <a class="list-group-item list-group-item-action list-group-item-info rounded-pill" style="margin-top: 10px;" asp-controller="Klients" asp-action="Index">
+                    Клиент
+                </a>
+            }
+            <a class="list-group-item list-group-item-action list-group-item-info rounded-pill" style="margin-top: 10px;" asp-controller="Kontakts" asp-action="Index">
+                Контакт
+            </a>
+            <a class="list-group-item list-group-item-action list-group-item-info rounded-pill" style="margin-top: 10px;" asp-controller="Spravkas" asp-action="Index">
+                Справка
+            </a>
+
+        </div>
+    </div>
+
+    <div class="card-group" style="width: 75%; margin: 0 auto;">
+        <div class="card-body" style="margin: 15px;"> 
+            <h5 class="card-title">Бассейн:</h5>
+            <a class="list-group-item list-group-item-action list-group-item-info rounded-pill" style="margin-top: 10px;" asp-controller="Vannas" asp-action="Index">
+                Ванна
+            </a>
+            @if (User.IsInRole("admin") || User.IsInRole("moderator"))
+            {
+                <a class="list-group-item list-group-item-action list-group-item-info rounded-pill" style="margin-top: 10px;" asp-controller="TypeVannas" asp-action="Index">
+                    Тип ванны
+                </a>
+            }
+        </div>
+
+        <div class="card-body" style="margin: 15px;"> 
+            <h5 class="card-title">Тренера:</h5>
+            <a class="list-group-item list-group-item-action list-group-item-info rounded-pill" style="margin-top: 10px;" asp-controller="Treners" asp-action="Index">
+                Тренер
+            </a>
+            @if (User.IsInRole("admin") || User.IsInRole("moderator")||User.IsInRole("trener"))
+            {
+                <a class="list-group-item list-group-item-action list-group-item-info rounded-pill" style="margin-top: 10px;" asp-controller="TypeTreners" asp-action="Index">
+                    Тип тренера
+                </a>
+            }
+        </div>
+
+        <div class="card-body" style="margin: 15px;">
+            <h5 class="card-title">Группа:</h5> 
+            <a class="list-group-item list-group-item-action list-group-item-info rounded-pill" style="margin-top: 10px;" asp-controller="Groups" asp-action="Index">
+                Группа
+            </a>
+            @if (User.IsInRole("admin") || User.IsInRole("moderator") || User.IsInRole("trener"))
+            {
+                <a class="list-group-item list-group-item-action list-group-item-info rounded-pill" style="margin-top: 10px;" asp-controller="TypeGroups" asp-action="Index">
+                    Тип группы
+                </a>
+            }
+        </div>
+
+        <div class="card-body" style="margin: 15px;"> 
+            <h5 class="card-title">Занятие:</h5>
+
+            <a class="list-group-item list-group-item-action list-group-item-info rounded-pill" style="margin-top: 10px;" asp-controller="ZanRtis" asp-action="Index">
+                Занятие
+            </a>
+            @if (User.IsInRole("admin") || User.IsInRole("moderator") || User.IsInRole("trener"))
+            {
+                <a class="list-group-item list-group-item-action list-group-item-info rounded-pill" style="margin-top: 10px;" asp-controller="TypeZanRtis" asp-action="Index">
+                    Тип занятия
+                </a>
+            }
+            <a class="list-group-item list-group-item-action list-group-item-info rounded-pill" style="margin-top: 10px;" asp-controller="Ychets" asp-action="Index">
+                Учет
+            </a>
+        </div>
+    </div>
+    @if (User.IsInRole("admin") || User.IsInRole("moderator"))
+    {
+        <div class="card-body" style="margin: 25px;">
+            <h5 class="card-title">Админу:</h5>
+            <a class="list-group-item list-group-item-action list-group-item-info rounded-pill" style="margin-top: 10px;" asp-controller="Roles" asp-action="Index">
+                Роли
+            </a>
+            <a class="list-group-item list-group-item-action list-group-item-info rounded-pill" style="margin-top: 10px;" asp-controller="Users" asp-action="Index">
+                Пользователи
+            </a>
+        </div>
+     }
+
+    }
+    else
+    {
+        <h4 class="text-danger">Зарегистрируйтесь для просмотра</h4>
+    }

@@ -1,0 +1,37 @@
+﻿@model BasseinProekt.Models.TypeGroup
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>TypeGroup</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NameGroup)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NameGroup)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nomer)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nomer)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-outline-info" asp-action="Index">Вернуться</a>
+    @if (User.IsInRole("admin") || User.IsInRole("moderator"))
+    {
+        <a class="btn btn-outline-info" asp-action="Edit" asp-route-id="@Model.Id">Изменить</a>
+    }
+    @if (User.IsInRole("admin"))
+    {
+        <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@Model.Id">Удалить</a>
+    }
+</div>

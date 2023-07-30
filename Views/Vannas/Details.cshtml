@@ -1,0 +1,55 @@
+﻿@model BasseinProekt.Models.Vanna
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Vanna</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TypeVanna)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TypeVanna.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NomerVanna)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NomerVanna)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Shirina)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Shirina)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Glubina)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Glubina)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Dlina)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Dlina)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-outline-info" asp-action="Index">Вернуться</a>
+    @if (User.IsInRole("admin") || User.IsInRole("moderator"))
+    {
+        <a class="btn btn-outline-info" asp-action="Edit" asp-route-id="@Model.Id">Изменить</a>
+    }
+    @if (User.IsInRole("admin"))
+    {
+        <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@Model.Id">Удалить</a>
+    }
+</div>
